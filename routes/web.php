@@ -17,6 +17,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+// Books
 $router->get('/books', 'BooksController@index');
 $router->get('/books/{id:[\d]+}', [
     'as' => 'books.show',
@@ -26,3 +27,14 @@ $router->post('/books', 'BooksController@store');
 $router->put('/books/{id:[\d]+}', 'BooksController@update');
 $router->delete('/books/{id:[\d]+}', 'BooksController@destroy');
 $router->delete('/books', 'BooksController@destroyall');
+
+// Peminjamans
+$router->get('/peminjamans', 'PeminjamanController@index');
+$router->get('/peminjamans/{id:[\d]+}', [
+    'as' => 'peminjamans.show',
+    'uses' => 'PeminjamanController@show'
+]);
+$router->post('/peminjamans', 'PeminjamanController@store');
+$router->put('/peminjamans/{id:[\d]+}', 'PeminjamanController@update');
+$router->delete('/peminjamans/{id:[\d]+}', 'PeminjamanController@destroy');
+$router->delete('/peminjamans', 'PeminjamanController@destroyall');
