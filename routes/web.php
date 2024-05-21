@@ -26,3 +26,37 @@ $router->post('/books', 'BooksController@store');
 $router->put('/books/{id:[\d]+}', 'BooksController@update');
 $router->delete('/books/{id:[\d]+}', 'BooksController@destroy');
 $router->delete('/books', 'BooksController@destroyall');
+
+
+$router->get('/peminjamans', 'PeminjamanController@index');
+$router->get('/peminjamans/{id:[\d]+}', [
+    'as' => 'peminjamans.show',
+    'uses' => 'PeminjamanController@show'
+]);
+$router->post('/peminjamans', 'PeminjamanController@store');
+$router->put('/peminjamans/{id:[\d]+}', 'PeminjamanController@update');
+$router->delete('/peminjamans/{id:[\d]+}', 'PeminjamanController@destroy');
+$router->delete('/peminjamans', 'PeminjamanController@destroyall');
+
+// $router->group([
+//     'prefix' => 'authors',
+//     'namespace' => 'App\Http\Controllers'
+// ], function () use ($router)  {
+//     $router->get('/', 'AuthorsController@index');
+//     $router->post('/', 'AuthorsController@store');
+//     $router->get('/{id:\d+}', [
+//         'as' => 'authors.show',
+//         'uses' => 'AuthorsController@show'
+//     ]);
+//     $router->put('/{id:\d+}', 'AuthorsController@update');
+//     $router->delete('/{id:\d+}', 'AuthorsController@destroy');
+// });
+
+$router->get('/authors', 'AuthorsController@index');
+$router->get('/authors/{id:[\d]+}', [
+    'as' => 'authors.show',
+    'uses' => 'AuthorsController@show'
+]);
+$router->post('/authors', 'AuthorsController@store');
+$router->put('/authors/{id:[\d]+}', 'AuthorsController@update');
+$router->delete('/authors/{id:[\d]+}', 'AuthorsController@destroy');
