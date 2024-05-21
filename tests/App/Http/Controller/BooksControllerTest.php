@@ -118,9 +118,10 @@ class BooksControllerTest extends TestCase
         $this->assertEquals('H. G. Wells', $data['author']);
         $this->assertTrue($data['id'] > 0, 'Expected a positive integer, but did not see one.');
         $this->assertArrayHasKey('created', $data);
-        $this->assertEquals(Carbon::now()->toIso8601String(), $data['created']);
         $this->assertArrayHasKey('updated', $data);
-        $this->assertEquals(Carbon::now()->toIso8601String(), $data['updated']);
+        $waktu_saat_ini = Carbon::now()->toIso8601String();
+        $this->assertEquals($waktu_saat_ini , $data['created']);
+        $this->assertEquals($waktu_saat_ini , $data['updated']);
         $this->seeInDatabase('books', ['title' => 'The Invisible Man']);
     }
 
@@ -180,9 +181,10 @@ class BooksControllerTest extends TestCase
         $this->assertArrayHasKey('data', $body);
         $data = $body['data'];
         $this->assertArrayHasKey('created', $data);
-        $this->assertEquals(Carbon::now()->toIso8601String(), $data['created']);
+        $waktu_saat_ini = Carbon::now()->toIso8601String();
+        $this->assertEquals($waktu_saat_ini, $data['created']);
         $this->assertArrayHasKey('updated', $data);
-        $this->assertEquals(Carbon::now()->toIso8601String(), $data['updated']);
+        $this->assertEquals($waktu_saat_ini, $data['updated']);
     }
 
     /** @test **/
